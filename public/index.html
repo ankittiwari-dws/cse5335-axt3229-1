@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           Customer Details
+        </title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    </head>
+   
+    <body>
+       <div ng-app="Details" ng-controller="SystemController">
+            <b>Details</b> 
+            <br/>
+            <br/>
+        <table border="1">
+            <tr>
+                <th>Name
+                    </th>
+                    <th>City
+                    </th>
+                    <th>Country
+                    </th>
+                   
+                </tr>
+                <tr ng-repeat="x in names">
+                    <td> {{ x.Name }}  </td>
+                    <td>{{ x.City }} </td>
+                    <td>{{ x.Country }}</td>
+                  
+                </tr>
+        </table>
+           </div>
+        <Script>
+            
+var app = angular.module('Details', []);
+app.controller('SystemController', function($scope, $http) {
+  $http.get("jsondatanew.json")
+  .success(function (response) {$scope.names = response.records;});
+});
+        </script>
+    </body>
+</html>
